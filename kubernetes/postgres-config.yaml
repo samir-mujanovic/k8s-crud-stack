@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: postgres-config
+data:
+  PG_DATABASE: cruddb
+  PG_HOST: crud-db
+  PG_PORT: "5432"

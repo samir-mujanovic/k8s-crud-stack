@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crud-frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-frontend
+  template:
+    metadata:
+      labels:
+        app: crud-frontend
+    spec:
+      containers:
+        - name: crud-frontend
+          image: xhawk1337/crud-react-app:1.2
+          ports:
+            - containerPort: 80
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "32Mi"
+            limits:
+              cpu: "200m"
+              memory: "128Mi"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: crud-frontend
+spec:
+  type: NodePort
+  selector:
+    app: crud-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+      nodePort: 30080

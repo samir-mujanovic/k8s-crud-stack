@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: crud-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: crud-backend
+  template:
+    metadata:
+      labels:
+        app: crud-backend
+    spec:
+      containers:
+        - name: crud-backend
+          image: xhawk1337/crud-backend-app:1.1
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "300m"
+              memory: "256Mi"
+          envFrom:
+          - secretRef:
+              name: postgres-secret
+          - configMapRef:
+              name: postgres-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: crud-backend
+spec:
+  selector:
+    app: crud-backend
+  ports:
+    - port: 3000
+      targetPort: 3000
+      nodePort: 30001
+  type: NodePort

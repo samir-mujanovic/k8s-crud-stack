@@ -3,6 +3,7 @@ kind: ConfigMap
 metadata:
   name: postgres-config
 data:
+  POSTGRES_DB: cruddb
   PG_DATABASE: cruddb
   PG_HOST: crud-db
   PG_PORT: "5432"

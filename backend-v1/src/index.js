@@ -14,3 +14,6 @@ app.listen(port, () => {
     console.log("listening on port 3000")
 });
 
+app.get('/status', (req, res) => {
+    res.status(200).send('Server is running');
+});

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: crud-frontend
-          image: xhawk1337/crud-react-app:1.2
+          image: xhawk1337/crud-react-app:1.0
           ports:
             - containerPort: 80
           resources:

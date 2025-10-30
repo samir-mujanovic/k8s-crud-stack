@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: crud-backend
-          image: xhawk1337/crud-backend-app:1.1
+          image: xhawk1337/crud-backend-app:1.0
           ports:
             - containerPort: 3000
           resources:

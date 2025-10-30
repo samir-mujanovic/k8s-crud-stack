@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: crud-backend
+  namespace: development
 spec:
   replicas: 1
   selector:
@@ -29,14 +30,4 @@ spec:
               name: postgres-secret
           - configMapRef:
               name: postgres-config
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: crud-backend
-spec:
-  selector:
-    app: crud-backend
-  ports:
-    - port: 3000
-      targetPort: 3000
+

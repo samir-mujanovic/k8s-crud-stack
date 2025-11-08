@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: k8s-crud-stack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/samir-mujanovic/k8s-crud-stack.git
+    targetRevision: HEAD
+    path: kubernetes
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: development
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
